@@ -4,6 +4,35 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="shop.mtcoding.mybatisdto.model.board.BoardRepository">
+
+    <resultMap id="boardDto" type="shop.mtcoding.mybatisdto.dto.BoardDto">
+        <id property="id" column="id" />
+        <id property="title" column="title" />
+        <id property="content" column="content" />
+        <id property="createdAt" column="created_at" />
+    </resultMap>
+
+    <resultMap id="userDto" type="shop.mtcoding.mybatisdto.dto.UserDto">
+        <id property="id" column="id" />
+        <id property="username" column="username" />
+        <id property="password" column="password" />
+        <id property="email" column="email" />
+        <id property="createdAt" column="created_at" />
+    </resultMap>
+
+    <resultMap id="boardJoinUserDto" type="shop.mtcoding.mybatisdto.dto.BoardJoinUserDto">
+        <association property="board" resultMap="boardDto" />
+        <association property="user" resultMap="userDto" />
+    </resultMap>
+
+    <select id="findByIdJoinUser2" resultMap="boardJoinUserDto">
+        select *
+        from board_tb b
+        inner join user_tb u
+        on b.user_id = u.id
+        where b.id = #{id}
+    </select>
+
     <select id="findAll" resultType="shop.mtcoding.mybatisdto.model.board.Board">
         select * from board_tb
     </select>

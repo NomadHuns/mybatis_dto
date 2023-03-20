@@ -18,4 +18,10 @@ public class BoardController {
         boardService.getBoardDetail(id);
         return null;
     }
+
+    @GetMapping("/board/v2/{id}")
+    public ResponseEntity<?> detail2(@PathVariable Integer id) {
+        boardService.getBoardDetail2(id);
+        return null;
+    }
 }

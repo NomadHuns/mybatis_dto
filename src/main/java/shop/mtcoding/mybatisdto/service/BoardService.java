@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import shop.mtcoding.mybatisdto.dto.BoardDetailOutDto;
 import shop.mtcoding.mybatisdto.dto.BoardDetailOutDto2;
+import shop.mtcoding.mybatisdto.dto.BoardJoinUserDto;
 import shop.mtcoding.mybatisdto.model.board.BoardRepository;
 
 @Service
@@ -18,6 +19,12 @@ public class BoardService {
         BoardDetailOutDto2 boardDetailOutDto2 = new BoardDetailOutDto2(boardDetailOutDto);
         System.out.println("테스트 : " + boardDetailOutDto2);
         return boardDetailOutDto2;
+    }
+
+    public BoardJoinUserDto getBoardDetail2(Integer id) {
+        BoardJoinUserDto boardJoinUserDto = boardRepository.findByIdJoinUser2(id);
+        System.out.println("테스트 : "+boardJoinUserDto);
+        return boardJoinUserDto;
     }
 
 }
