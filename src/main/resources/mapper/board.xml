@@ -25,4 +25,17 @@
         update board_tb set title= #{title}, content= #{content} where id = #{id}
     </update>
 
+    <select id="findByIdJoinUser" resultType="shop.mtcoding.mybatisdto.dto.BoardDetailOutDto">
+        select b.*, 
+               u.id user_id, 
+               u.username user_username, 
+               u.password user_password, 
+               u.email user_email, 
+               u.created_at user_created_at
+        from board_tb b
+        inner join user_tb u
+        on b.user_id = u.id
+        where b.id = #{id}
+    </select>
+
 </mapper>
