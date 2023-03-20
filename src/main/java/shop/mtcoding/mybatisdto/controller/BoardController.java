@@ -14,14 +14,17 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/board/{id}")
-    public ResponseEntity<?> detail(@PathVariable Integer id){
-        boardService.getBoardDetail(id);
-        return null;
+    public ResponseEntity<?> detail(@PathVariable Integer id) {
+        return ResponseEntity.ok().body(boardService.getBoardDetail(id));
     }
 
     @GetMapping("/board/v2/{id}")
     public ResponseEntity<?> detail2(@PathVariable Integer id) {
-        boardService.getBoardDetail2(id);
-        return null;
+        return ResponseEntity.ok().body(boardService.getBoardDetail2(id));
+    }
+
+    @GetMapping("/board/v3/{id}")
+    public ResponseEntity<?> detail3(@PathVariable Integer id) {
+        return ResponseEntity.ok().body(boardService.getBoardDetail3(id));
     }
 }
